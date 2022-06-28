@@ -2,11 +2,11 @@ from abc import ABC, abstractmethod
 from typing import Any
 
 
-class IEnumGenderCacheRepository(ABC):
+class IEnumMaritalStatusCacheRepository(ABC):
     @abstractmethod
-    def save_enum_gender(self, enum_gender: Any, time: int):
+    def save_enum_marital_status(self, enum_marital_status: Any, time: int):
         pass
 
     @abstractmethod
-    def get_enum_gender(self) -> Any:
+    def get_enum_marital_status(self) -> Any:
         pass

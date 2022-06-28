@@ -5,38 +5,16 @@ from etria_logger import Gladsheim
 from flask import request, Response, Request
 
 from src.domain.response.status_code.enums import StatusCode
-from src.domain.validators.city.validator import CityParams
-from src.infrastructure.env_config import Configuration
 
-Configuration.get_config(
-    env_path=Path(__file__).parent.absolute()
-)  # This line is important to load the environment variables needed by the project!
-
-from src.domain.response.model import ResponseModel
-from src.service.city_enum.service import CityEnumService
+from func.src.domain.response.model import ResponseModel
+from func.src.service.marital_status_enum.service import MaritalStatusEnumService
 
 
 def get_enums(request_: Request = request) -> Response:
-    parameters = request_.args.to_dict()
-
     try:
-        parameters_validated = CityParams(**parameters)
-        service_response = CityEnumService.get_response(parameters_validated)
+        service_response = MaritalStatusEnumService.get_response()
         response = ResponseModel.build_http_response(
             response_model=service_response, status=HTTPStatus.OK
-        )
-        return response
-
-    except ValueError:
-        Gladsheim.error(error=TypeError(), message="Bad request. Incorrect or invalid parameters.")
-        response = ResponseModel.build_http_response(
-            response_model=ResponseModel.build_response(
-                success=False,
-                code=StatusCode.INVALID_PARAMS,
-                message="Bad request. Incorrect or invalid parameters.",
-                result=[],
-            ),
-            status=HTTPStatus.BAD_REQUEST,
         )
         return response
 
