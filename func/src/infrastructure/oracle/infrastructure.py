@@ -1,10 +1,9 @@
 import cx_Oracle
 
-from decouple import config
+from func.src.infrastructure.env_config import Configuration
 
 
 class OracleInfrastructure:
-
     @classmethod
     def get_connection(cls) -> cx_Oracle.Cursor:
         connection = cls._make_connection()
@@ -13,21 +12,16 @@ class OracleInfrastructure:
     @classmethod
     def _make_connection(cls) -> cx_Oracle.Connection:
         connection = cx_Oracle.connect(
-            user=config("ORACLE_USER"),
-            password=config("ORACLE_PASSWORD"),
+            user=Configuration.config("ORACLE_USER"),
+            password=Configuration.config("ORACLE_PASSWORD"),
             dsn=cx_Oracle.makedsn(
-                config("ORACLE_BASE_DSN"),
-                config("ORACLE_PORT"),
-                service_name=config("ORACLE_SERVICE"),
+                Configuration.config("ORACLE_BASE_DSN"),
+                Configuration.config("ORACLE_PORT"),
+                service_name=Configuration.config("ORACLE_SERVICE"),
             ),
-            encoding=config("ORACLE_ENCODING"),
+            encoding=Configuration.config("ORACLE_ENCODING"),
         )
         return connection
 
 
-cursor = OracleInfrastructure.get_connection()
-sql = "SELECT DESC_EST_CIVIL as marital_status FROM CORRWIN.TSCDXEST_CIVIL"
-ok = cursor.execute(sql)
-for i in ok:
-    print(i)
 

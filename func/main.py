@@ -4,7 +4,12 @@ from pathlib import Path
 from etria_logger import Gladsheim
 from flask import request, Response, Request
 
-from src.domain.response.status_code.enums import StatusCode
+from func.src.domain.response.status_code.enums import StatusCode
+from func.src.infrastructure.env_config import Configuration
+
+Configuration.get_config(
+    env_path=Path(__file__).parent.absolute()
+)  # This line is important to load the environment variables needed by the project!
 
 from func.src.domain.response.model import ResponseModel
 from func.src.service.marital_status_enum.service import MaritalStatusEnumService
@@ -43,3 +48,6 @@ def get_enums(request_: Request = request) -> Response:
             status=HTTPStatus.INTERNAL_SERVER_ERROR,
         )
         return response
+
+
+print(get_enums().data)
