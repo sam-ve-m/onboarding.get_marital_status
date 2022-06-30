@@ -3,11 +3,11 @@ from typing import Union
 from etria_logger import Gladsheim
 from mnemosine import SyncCache
 
-from func.src.core.interfaces.repository.enum_marital_status_cache.interface import IEnumMaritalStatusCacheRepository
+from src.core.interfaces.repository.enum_marital_status_cache.interface import IEnumMaritalStatusCacheRepository
 
 
 class EnumMaritalStatusCacheRepository(IEnumMaritalStatusCacheRepository):
-    enum_key = "jormungandr:EnumMAritalStatus"
+    enum_key = "jormungandr:EnumMaritalStatus"
 
     @classmethod
     def save_enum_marital_status(cls, enum_marital_status: list, time: int = 3600) -> bool:
