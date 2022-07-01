@@ -49,5 +49,3 @@ def get_enums(request_: Request = request) -> Response:
         )
         return response
 
-
-print(get_enums().data)
