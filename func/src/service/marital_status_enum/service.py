@@ -1,6 +1,8 @@
 from etria_logger import Gladsheim
 
-from src.core.interfaces.service.marital_status_enum.interface import IMaritalStatusEnumService
+from src.core.interfaces.service.marital_status_enum.interface import (
+    IMaritalStatusEnumService,
+)
 from src.domain.response.model import ResponseModel
 from src.domain.response.status_code.enums import StatusCode
 from src.repository.marital_status_enum.repository import MaritalStatusEnumRepository

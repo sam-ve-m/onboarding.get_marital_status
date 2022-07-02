@@ -1,7 +1,11 @@
 from typing import List, Tuple
 
-from src.core.interfaces.repository.marital_status_enum.interface import IMaritalStatusEnumRepository
-from src.repository.enum_marital_status_cache.repository import EnumMaritalStatusCacheRepository
+from src.core.interfaces.repository.marital_status_enum.interface import (
+    IMaritalStatusEnumRepository,
+)
+from src.repository.enum_marital_status_cache.repository import (
+    EnumMaritalStatusCacheRepository,
+)
 from src.repository.base_repository.oracle.repository import OracleBaseRepository
 
 

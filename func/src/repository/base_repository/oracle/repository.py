@@ -118,5 +118,3 @@ class OracleBaseRepository(IOracle):
             message = f"Oracle-Error-Code: {error.code}. Oracle-Error-Message: {error.message} - Values: {values} - Oracle-ex: {e}"
             Gladsheim.error(error=e, message=message)
             raise InternalServerError("common.process_issue")
-
-

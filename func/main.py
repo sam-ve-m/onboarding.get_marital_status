@@ -48,4 +48,3 @@ def get_enums(request_: Request = request) -> Response:
             status=HTTPStatus.INTERNAL_SERVER_ERROR,
         )
         return response
-

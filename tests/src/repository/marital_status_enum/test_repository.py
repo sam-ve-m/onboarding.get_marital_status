@@ -1,5 +1,7 @@
 from src.repository.marital_status_enum.repository import MaritalStatusEnumRepository
-from src.repository.enum_marital_status_cache.repository import EnumMaritalStatusCacheRepository
+from src.repository.enum_marital_status_cache.repository import (
+    EnumMaritalStatusCacheRepository,
+)
 from src.repository.base_repository.oracle.repository import OracleBaseRepository
 from tests.test_doubles.doubles import (
     enum_repository_get_cached_enum_dummy,

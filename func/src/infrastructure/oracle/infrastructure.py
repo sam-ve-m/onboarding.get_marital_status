@@ -22,6 +22,3 @@ class OracleInfrastructure:
             encoding=Configuration.config("ORACLE_ENCODING"),
         )
         return connection
-
-
-
