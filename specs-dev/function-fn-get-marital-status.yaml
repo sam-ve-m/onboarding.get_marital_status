@@ -51,5 +51,5 @@ spec:
     packageref:
       name: fn-get-marital-status-2ab3695d-66a2-468b-9c62-7e3271676c42
       namespace: default
-  requestsPerPod: 1
+  requestsPerPod: 10000
   resources: {}
