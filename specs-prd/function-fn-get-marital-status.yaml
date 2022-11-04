@@ -1,0 +1,55 @@
+include:
+- ./func/*
+kind: ArchiveUploadSpec
+name: func-85Vh
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: fn-get-marital-status-2ab3695d-66a2-468b-9c62-7e3271676c42
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+  environment:
+    name: env-get-marital-status
+    namespace: default
+  source:
+    checksum: {}
+    type: url
+    url: archive://func-85Vh
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2022-07-12T16:50:25Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: fn-get-marital-status
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: newdeploy
+      MaxScale: 3
+      MinScale: 1
+      SpecializationTimeout: 120
+      TargetCPUPercent: 80
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: env-get-marital-status
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    functionName: main.get_enums
+    packageref:
+      name: fn-get-marital-status-2ab3695d-66a2-468b-9c62-7e3271676c42
+      namespace: default
+  requestsPerPod: 10000
+  resources: {}
