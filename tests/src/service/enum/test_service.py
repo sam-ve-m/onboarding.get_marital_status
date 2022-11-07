@@ -1,8 +1,8 @@
 from unittest.mock import patch
 import pytest
 
-from src.service.marital_status_enum.service import MaritalStatusEnumService
-from src.repository.marital_status_enum.repository import MaritalStatusEnumRepository
+from func.src.service.marital_status_enum.service import MaritalStatusEnumService
+from func.src.repository.marital_status_enum.repository import MaritalStatusEnumRepository
 
 from tests.test_doubles.doubles import (
     enum_service_get_enums_response_ok,
