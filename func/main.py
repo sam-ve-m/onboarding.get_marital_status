@@ -15,7 +15,7 @@ from func.src.domain.response.model import ResponseModel
 from func.src.service.marital_status_enum.service import MaritalStatusEnumService
 
 
-def get_enums(request_: Request = request) -> Response:
+async def get_enums(request_: Request = request) -> Response:
     try:
         service_response = MaritalStatusEnumService.get_response()
         response = ResponseModel.build_http_response(
