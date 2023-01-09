@@ -4,4 +4,4 @@
 apiVersion: fission.io/v1
 kind: DeploymentConfig
 name: onboarding-get-marital-status
-uid: f984e799-3336-4031-825d-b2779a8739e7
+uid: 60aa3009-7dbe-4889-b949-92a2547a0fb8

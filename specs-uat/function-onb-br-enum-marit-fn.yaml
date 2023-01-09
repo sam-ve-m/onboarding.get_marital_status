@@ -1,35 +1,35 @@
 include:
-- ./func/*
+- fission.py
 kind: ArchiveUploadSpec
-name: func-85Vh
+name: fission-py-h5Vm
 
 ---
 apiVersion: fission.io/v1
 kind: Package
 metadata:
   creationTimestamp: null
-  name: fn-get-marital-status-2ab3695d-66a2-468b-9c62-7e3271676c42
+  name: onb-br-enum-marit-fn-e8d20f8d-ce13-41ed-8a9b-e20a73ef8ab5
   namespace: default
 spec:
   deployment:
     checksum: {}
+    type: url
+    url: archive://fission-py-h5Vm
   environment:
-    name: env-get-marital-status
+    name: onb-br-enum-marit-env
     namespace: default
   source:
     checksum: {}
-    type: url
-    url: archive://func-85Vh
 status:
-  buildstatus: pending
-  lastUpdateTimestamp: "2022-07-12T16:50:25Z"
+  buildstatus: none
+  lastUpdateTimestamp: "2023-01-05T18:37:41Z"
 
 ---
 apiVersion: fission.io/v1
 kind: Function
 metadata:
   creationTimestamp: null
-  name: fn-get-marital-status
+  name: onb-br-enum-marit-fn
   namespace: default
 spec:
   InvokeStrategy:
@@ -38,18 +38,24 @@ spec:
       MaxScale: 3
       MinScale: 1
       SpecializationTimeout: 120
-      TargetCPUPercent: 80
+      TargetCPUPercent: 0
+      hpaMetrics:
+      - resource:
+          name: cpu
+          target:
+            averageUtilization: 80
+            type: Utilization
+        type: Resource
     StrategyType: execution
   concurrency: 500
   environment:
-    name: env-get-marital-status
+    name: onb-br-enum-marit-env
     namespace: default
   functionTimeout: 60
   idletimeout: 120
   package:
-    functionName: main.get_enums
     packageref:
-      name: fn-get-marital-status-2ab3695d-66a2-468b-9c62-7e3271676c42
+      name: onb-br-enum-marit-fn-e8d20f8d-ce13-41ed-8a9b-e20a73ef8ab5
       namespace: default
   requestsPerPod: 10000
   resources: {}
