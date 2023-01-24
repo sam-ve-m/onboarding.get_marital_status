@@ -11,6 +11,7 @@ spec:
       resources: {}
   imagepullsecret: nexus-v3
   keeparchive: false
+  poolsize: 3
   resources: {}
   runtime:
     container:
@@ -35,4 +36,5 @@ spec:
           value: "5VUn2yD5"
         - name: LD_LIBRARY_PATH
           value: "/opt/instantclient"
+  terminationGracePeriod: 3
   version: 3
