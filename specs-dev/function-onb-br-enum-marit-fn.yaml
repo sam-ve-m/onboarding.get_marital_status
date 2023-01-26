@@ -34,20 +34,12 @@ metadata:
 spec:
   InvokeStrategy:
     ExecutionStrategy:
-      ExecutorType: newdeploy
-      MaxScale: 3
-      MinScale: 1
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
       SpecializationTimeout: 120
       TargetCPUPercent: 0
-      hpaMetrics:
-      - resource:
-          name: cpu
-          target:
-            averageUtilization: 80
-            type: Utilization
-        type: Resource
     StrategyType: execution
-  concurrency: 500
   environment:
     name: onb-br-enum-marit-env
     namespace: default
@@ -57,5 +49,5 @@ spec:
     packageref:
       name: onb-br-enum-marit-fn-e8d20f8d-ce13-41ed-8a9b-e20a73ef8ab5
       namespace: default
-  requestsPerPod: 10000
+  requestsPerPod: 10
   resources: {}
